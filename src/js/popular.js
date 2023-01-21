@@ -63,3 +63,4 @@ function getGenresName(allGenres, genreIds) {
   }, []);
   return genresName.length > 2 ? genresName.slice(0, 2) : genresName;
 }
+getGenres().then(res=>{}).then(data=>{console.log(data.name)})
