@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import { renderMarkup } from './popular';
 
  
 import { cardsList } from './popular';
@@ -151,3 +150,4 @@ async function setToLocalStorageQueue(evt){
 //   const savedWatched = localStorage.get("watched");
 //   console.log(savedWatched);;
 // }
+}
