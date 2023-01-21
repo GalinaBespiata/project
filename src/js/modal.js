@@ -150,4 +150,5 @@ async function setToLocalStorageQueue(evt){
 //   const savedWatched = localStorage.get("watched");
 //   console.log(savedWatched);;
 // }
-}
+=========
+>>>>>>>>> Temporary merge branch 2
