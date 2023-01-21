@@ -5,7 +5,6 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { renderMarkup } from './popular';
 
- 
 import { cardsList } from './popular';
 
 const modalBackdrop = document.querySelector('.backdrop__modal-film');
@@ -147,7 +146,5 @@ async function setToLocalStorageQueue(evt){
   console.log(queue)
 }
 
-// function onfilterWatched(evt){
-//   const savedWatched = localStorage.get("watched");
-//   console.log(savedWatched);;
-// }
+
+
