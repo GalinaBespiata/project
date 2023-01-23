@@ -8,11 +8,12 @@ import { cardsList } from './popular';
 const YOUTUBE = 'http://www.youtube.com/embed/';
 
 cardsList.addEventListener('click', createTrailer);
+
 const modalCardInfo = document.querySelector('.modal__trailer');
 
 //function by click on image
 async function createTrailer(event) {
-  currentId = event.target.parentNode.dataset.id; // const id of film
+  currentId = event.target.parentNode.dataset.id;
 
   addMovieInfo(currentId);
   // //Find all info about film, get object
@@ -28,7 +29,7 @@ async function createTrailer(event) {
 
       modalCardInfo.innerHTML = `
           <h2 class="modal-filmoteka__title title">
-            Watch trailer  | 
+            Watch trailer
           </h2>
          <iframe
           class="trailer__video"
