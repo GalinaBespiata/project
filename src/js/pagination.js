@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getPopular } from './popular.js';
+<<<<<<< Updated upstream
 
 // функционал кнопок пагинации
 
@@ -212,4 +213,86 @@ function onPaginationClick(event) {
 
     // getPopular(currentPage).then(data => console.log(data));
   }
+=======
+// import { getByName } from './search.js';
+
+import { renderMarkup } from './popular.js';
+// let functionKeyNumber = '';
+const paginationBox = document.querySelector('.pagination-container');
+console.log('paginationBox', paginationBox);
+let globalCurrentpage = 0;
+
+export function pagination(currentPage, allPages) {
+  let markup = '';
+  let beforeTwoPage = currentPage - 2;
+  let beforePage = currentPage - 1;
+  let afterPage = currentPage + 1;
+  let afterTwoPage = currentPage + 2;
+  // functionKeyNumber = key;
+  globalCurrentpage = currentPage;
+  if (currentPage > 1) {
+    markup += `<li class="pagination__item arrow-left" >&#129144;</li>`;
+    markup += `<li class="pagination__item">1</li>`;
+  }
+  if (currentPage > 4) {
+    markup += `<li  class="pagination__item dotsLeft">...</span>`;
+  }
+  if (currentPage > 3) {
+    markup += `<li  class="pagination__item">${beforeTwoPage}</li>`;
+  }
+  if (currentPage > 2) {
+    markup += `<li  class="pagination__item">${beforePage}</li>`;
+  }
+  markup += `<li class="pagination__item pagination__item--active">${currentPage}</li>`;
+  if (allPages - 1 > currentPage) {
+    markup += `<li  class="pagination__item">${afterPage}</li>`;
+  }
+  if (allPages - 2 > currentPage) {
+    markup += `<li class="pagination__item">${afterTwoPage}</li>`;
+  }
+  if (allPages - 3 > currentPage) {
+    markup += `<li  class="pagination__item dotsRight">...</li>`;
+  }
+  if (allPages > currentPage) {
+    markup += `<li  class="pagination__item">${allPages}</li>`;
+    markup += `<li  class="pagination__item arrow-right">&#129146;<li>`;
+  }
+  paginationBox.innerHTML = markup;
+}
+paginationBox.addEventListener('click', handlerPagination);
+
+function handlerPagination(evt) {
+  if (evt.target.nodeName !== 'LI') {
+    return;
+  }
+  if (evt.target.textContent === '...') {
+    return;
+  }
+  if (evt.target.textContent === '🡸') {
+    getPopular((globalCurrentpage -= 1)).then(
+      ({ results, page, total_pages }) => {
+        renderMarkup(results);
+        pagination(page, total_pages);
+      }
+    );
+    return;
+  }
+
+  if (evt.target.textContent === '🡺') {
+    getPopular((globalCurrentpage += 1)).then(
+      ({ results, page, total_pages }) => {
+        renderMarkup(results);
+        pagination(page, total_pages);
+      }
+    );
+    return;
+  }
+  
+  const page = evt.target.textContent;
+  console.log(page);
+  getPopular(page).then(({ results, page, total_pages }) => {
+    renderMarkup(results);
+    pagination(page, total_pages);
+  });
+>>>>>>> Stashed changes
 }
